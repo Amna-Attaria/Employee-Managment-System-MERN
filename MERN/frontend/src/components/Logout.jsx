@@ -10,7 +10,8 @@ const Logout = () => {
 
  useEffect(()=>{
     dispatch(logout())
-    navigate("/")
+    alert ("LogOut Successfully")
+    navigate("/login")
 
  })
 

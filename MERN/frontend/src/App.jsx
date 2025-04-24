@@ -9,11 +9,13 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import LoginPage from './Pages/LoginPage';
 // import Cart from "./Pages/Cart" 
-import Logout from "./Pages/Logout" 
-import Profile from "./Pages/Profile"
-import Admin from "./Pages/AdminPage"
+import Logout from "./components/Logout" 
+// import Profile from "./Pages/Profile"
+import Profile from './components/Profile';
+import Employee from "./Pages/EmployeePage"
+// import Admin from "./Pages/AdminPage"
 // import Products from './Pages/Products';
-import Update from './Pages/Update';
+import Update from './components/Update';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -35,7 +37,7 @@ const App = () => {
         pauseOnHover
       /> */}
     
-      {!adminPage && <Navigation />} 
+      {/* {!adminPage && <Navigation />}  */}
       <Routes>
       <Route path="/" element={<SignUp />} />
       <Route path="/login" element={<LoginPage />} />
@@ -44,12 +46,13 @@ const App = () => {
         <Route path="/about" element={<About />} /> */}
         {/* <Route path="/cart" element={<Cart />} /> */}
         <Route path="/logout" element={<Logout />} />
-        <Route path="/admin" element={<Admin />} />
-        {/* <Route path='/products' element={<Products />} /> */}
+        <Route path="/Employee" element={<Employee />} />
         <Route path="/profile" element={<Profile />} />
+        {/* <Route path='/products' element={<Products />} /> */}
+        {/* <Route path="/profile" element={<Profile />} /> */}
         <Route path="/update" element={<Update />} />
     </Routes>
-    {!adminPage && <Footer />}
+    {/* {!adminPage && <Footer />} */}
     </>
   );
 };

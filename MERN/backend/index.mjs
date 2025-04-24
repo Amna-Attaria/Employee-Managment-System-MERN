@@ -3,6 +3,8 @@ import mongoose from "./db/index.mjs";
 import userRoutes from "./routes/userRoutes.mjs"
 import cartRoutes from "./routes/cartRoutes.mjs"
 import productRoutes from "./routes/productRoutes.mjs"
+import leaveRouter from "./routes/userRoutes.mjs"
+
 import chalk from "chalk";
 import cors from "cors";
 import connectToDB from "./db/index.mjs";
@@ -30,6 +32,11 @@ const port = 5000;
 app.use("/api/auth",userRoutes)
 app.use("/api/cart",cartRoutes)
 app.use('/api/products', productRoutes);
+app.use('/api/leave', leaveRouter);
+
+
+
+
 
 
 app.use("/", (req, res, next) => {

@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AdminDashboard from '../components/AdminDashboard';
+import EmployeeDashboard from '../components/EmployeeDashboard';
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
-const AdminPage = () => {
+const EmployeePage = () => {
 	const navigate = useNavigate();
-	const [isAdmin, setIsAdmin] = useState(false);
+	const [isEmployee, setIsEmployee] = useState(false);
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		const checkAdminStatus = async () => {
+		const checkEmployeeStatus = async () => {
 			try {
 				const token = localStorage.getItem('token');
+				console.log("Token:", token);
 if (!token) {
 					console.error('No auth token found! Redirecting to login.');
 					navigate('/login');
 					return;
 				}
-				const response = await fetch(`${apiUrl}/auth/isAdmin`, {
+				const response = await fetch(`${apiUrl}/auth/isEmployee`, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json',
@@ -25,38 +26,38 @@ if (!token) {
 				});
 
 				const data = await response.json();
-				console.log('Admin Check Response:', data);
+				console.log('Employee Check Response:', data);
 
 				if (data.success) {
-					setIsAdmin(true);
+					setIsEmployee(true);
 				} else {
-					console.log('User is not an admin, redirecting to login');
+					console.log('User is not an employee, redirecting to login');
 					navigate('/login');
 				}
 			} catch (error) {
-				console.error('Error checking admin status:', error);
+				console.error('Error checking employee status:', error);
 				navigate('/login');
 			} finally {
 				setLoading(false);
 			}
 		};
 
-		checkAdminStatus();
+		checkEmployeeStatus();
 	}, []);
 
 	if (loading) {
 		return <div>Loading...</div>;
 	}
 
-	if (!isAdmin) {
+	if (!isEmployee) {
 		return null;
 	}
 
 	return (
 		<div>
-			<AdminDashboard />
+			<EmployeeDashboard />
 		</div>
 	);
 };
 
-export default AdminPage;
+export default EmployeePage;

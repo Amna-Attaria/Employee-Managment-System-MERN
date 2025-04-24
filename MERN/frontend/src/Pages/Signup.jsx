@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 import * as Yup from "yup";
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -36,6 +38,107 @@ const Signup = () => {
   
 
   return (
+
+    <div className="flex justify-center items-center min-h-screen ">
+    <div className="w-full max-w-md bg-white border border-gray-300 rounded-xl shadow-xl p-6">
+      <h2 className="text-2xl font-bold text-gray-800 text-center mb-1">Employee Registration</h2>
+      <p className="text-sm text-gray-500 text-center mb-6">Please fill in your details to get started</p>
+  
+      <Formik
+    initialValues={{ name: "", email: "", password: "" }}
+    validationSchema={validationSchema}
+    onSubmit={async (values) => {
+      setLoading(true);
+      try {
+        const response = await fetch(`${apiUrl}/auth/user`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        });
+  
+        const data = await response.json();
+        setLoading(false);
+  
+        if (response.ok) {
+          toast.success(data.message);
+          navigate('/login');  // Redirect to login page after successful signup
+        } else {
+          toast.error(data.message || "An error occurred");
+        }
+      } catch (error) {
+        setLoading(false);
+        toast.error(error.message || "An error occurred");
+      }
+    }}
+  >
+    <Form className="space-y-5">
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Full Name</label>
+        <Field
+          name="name"
+          type="text"
+          className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600 bg-gray-50"
+          placeholder="Enter Your Name"
+        />
+        <ErrorMessage name="name" component="p" className="text-red-500 text-sm mt-1" />
+      </div>
+  
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Work Email</label>
+        <Field
+          name="email"
+          type="email"
+          className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600 bg-gray-50"
+          placeholder="Enter Your email"
+        />
+        <ErrorMessage name="email" component="p" className="text-red-500 text-sm mt-1" />
+      </div>
+  
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Create Password</label>
+        <div className="relative">
+          <Field
+            name="password"
+            type={showPassword ? "text" : "password"}
+            className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600 bg-gray-50"
+            placeholder="Minimum 6 characters"
+          />
+          <button
+            type="button"
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-teal-600"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </button>
+        </div>
+        <ErrorMessage name="password" component="p" className="text-red-500 text-sm mt-1" />
+      </div>
+  
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-teal-600 hover:bg-teal-700 text-white py-2 rounded-md font-semibold transition duration-200"
+      >
+        {loading ? "Registering..." : "Register"}
+      </button>
+      <h3>
+  If you already have an account, please{" "}
+  <Link to="/login" className="text-teal-600 hover:underline font-semibold text-center">
+    Login
+  </Link>
+</h3>
+
+    </Form>
+  </Formik>
+  
+    </div>
+  </div>
+
+
+
+
+
+
     // <div className="flex justify-center items-center min-h-screen bg-purple-50 px-4e">
     //   <div className="relative flex flex-col rounded-xl bg-white shadow-lg p-6 w-full max-w-md">
     //     <h2 className="text-2xl font-semibold text-gray-800 text-center">Sign Up</h2>
@@ -126,93 +229,6 @@ const Signup = () => {
     //   </div>
     // </div>
 
-    <div className="flex justify-center items-center min-h-screen ">
-  <div className="w-full max-w-md bg-white border border-gray-300 rounded-xl shadow-xl p-6">
-    <h2 className="text-2xl font-bold text-gray-800 text-center mb-1">Employee Registration</h2>
-    <p className="text-sm text-gray-500 text-center mb-6">Please fill in your details to get started</p>
-
-    <Formik
-  initialValues={{ name: "", email: "", password: "" }}
-  validationSchema={validationSchema}
-  onSubmit={async (values) => {
-    setLoading(true);
-    try {
-      const response = await fetch(`${apiUrl}/auth/user`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
-
-      const data = await response.json();
-      setLoading(false);
-
-      if (response.ok) {
-        toast.success(data.message);
-        navigate('/login');  // Redirect to login page after successful signup
-      } else {
-        toast.error(data.message || "An error occurred");
-      }
-    } catch (error) {
-      setLoading(false);
-      toast.error(error.message || "An error occurred");
-    }
-  }}
->
-  <Form className="space-y-5">
-    <div>
-      <label className="block text-sm font-medium text-gray-700">Full Name</label>
-      <Field
-        name="name"
-        type="text"
-        className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600 bg-gray-50"
-        placeholder="Enter Your Name"
-      />
-      <ErrorMessage name="name" component="p" className="text-red-500 text-sm mt-1" />
-    </div>
-
-    <div>
-      <label className="block text-sm font-medium text-gray-700">Work Email</label>
-      <Field
-        name="email"
-        type="email"
-        className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600 bg-gray-50"
-        placeholder="Enter Your email"
-      />
-      <ErrorMessage name="email" component="p" className="text-red-500 text-sm mt-1" />
-    </div>
-
-    <div>
-      <label className="block text-sm font-medium text-gray-700">Create Password</label>
-      <div className="relative">
-        <Field
-          name="password"
-          type={showPassword ? "text" : "password"}
-          className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600 bg-gray-50"
-          placeholder="Minimum 6 characters"
-        />
-        <button
-          type="button"
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-teal-600"
-          onClick={() => setShowPassword(!showPassword)}
-        >
-          {showPassword ? <FaEyeSlash /> : <FaEye />}
-        </button>
-      </div>
-      <ErrorMessage name="password" component="p" className="text-red-500 text-sm mt-1" />
-    </div>
-
-    <button
-      type="submit"
-      disabled={loading}
-      className="w-full bg-teal-600 hover:bg-teal-700 text-white py-2 rounded-md font-semibold transition duration-200"
-    >
-      {loading ? "Registering..." : "Register"}
-    </button>
-  </Form>
-</Formik>
-
-  </div>
-</div>
 
   );
 };

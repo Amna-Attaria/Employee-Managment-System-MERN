@@ -122,22 +122,46 @@ export {
 
 // for admin
 
-export const isAdmin = async (req, res) => {
+// export const isAdmin = async (req, res) => {
+//   const { userId } = req.user;
+//   const {role} = await User.findById(userId);
+  
+//   if(role !== "admin"){
+//     console.log("❌ user is not an admin")
+//    return  res.status(401).json({
+//       success:false,
+//       message:"❌ user is not an admin",
+//       isAdmin :false
+//     })
+//   }
+//   res.status(200).json({
+//     success:true,
+//     message:"✔ user is  an admin",
+//     isAdmin :true
+//   })
+// console.log("✔ user is  an admin")
+// };
+
+
+/////////////////////////////////// Employee
+export const isEmployee = async (req, res) => {
   const { userId } = req.user;
   const {role} = await User.findById(userId);
   
-  if(role !== "admin"){
-    console.log("❌ user is not an admin")
+  if(role !== "employee"){
+    console.log("❌ user is not an employee")
    return  res.status(401).json({
       success:false,
-      message:"❌ user is not an admin",
-      isAdmin :false
+      message:"❌ user is not an employee",
+      isEmployee :false
     })
   }
   res.status(200).json({
     success:true,
-    message:"✔ user is  an admin",
-    isAdmin :true
+    message:"✔ user is  an employee",
+    isEmployee :true
   })
-console.log("✔ user is  an admin")
+console.log("✔ user is  an employee")
 };
+
+
