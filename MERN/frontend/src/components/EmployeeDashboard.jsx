@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaBars, FaBox, FaChartBar, FaUser, FaRegCalendarAlt, FaTimes } from 'react-icons/fa';
-import Products from './Products';
+import { FaBars, FaBox, FaChartBar, FaUser, FaRegCalendarAlt, FaTimes ,FaSignOutAlt ,FaMoneyBillWave } from 'react-icons/fa';
+// import Products from './Products';
+import Dashbord from './Dashbord.jsx'
+import Salary from './Salary.jsx'
 import Leave from './Leave';
 import Profile from './Profile';
-import Attendance from './Leave'
+import CheakInOut from './CheakInOut'
 import Logout from './Logout'
 
 
@@ -65,12 +67,12 @@ const EmployeeDashboard = () => {
 
 	const renderContent = () => {
 		switch (activeTab) {
-			case 'Products':
-				return (
-					<div className='p-4'>
-						<Products />
-					</div>
-				);
+			// case 'Products':
+			// 	return (
+			// 		<div className='p-4'>
+			// 			<Products />
+			// 		</div>
+			// 	);
 
 				case 'Profile':
 				return(
@@ -85,6 +87,19 @@ const EmployeeDashboard = () => {
 						<Leave />
 					</div>
 				);
+				case 'CheakinOut':
+					return (
+						<div className='p-4'>
+							<CheakInOut />
+						</div>
+					);
+					case 'Salary':
+						return(
+							<div className='p-4'>
+								  <Salary />
+							</div>
+						
+						);
 				case 'LogOut':
 					return(
 						<div className='p-4'>
@@ -93,7 +108,10 @@ const EmployeeDashboard = () => {
 					
 					)
 			default:
-				return <div className='p-4'>Select an option from the menu</div>;
+				return <div className='p-4'>
+				<Dashbord />
+		  </div>
+	  
 		}
 	};
 
@@ -133,14 +151,25 @@ const EmployeeDashboard = () => {
   isActive={activeTab === 'Leave'}
   onClick={() => setActiveTab('Leave')}
 />
+<MenuItem
+							icon={<FaSignOutAlt  />}
+							text='CheakinOut'
+							isActive={activeTab === 'CheakinOut'}
+							onClick={() => setActiveTab('CheakinOut')}
+						/>
+<MenuItem
+  icon={<FaMoneyBillWave />}
+  text='Salary'
+  isActive={activeTab === 'Salary'}
+  onClick={() => setActiveTab('Salary')}
+/>
 
-
-						<MenuItem
+						{/* <MenuItem
 							icon={<FaBox />}
 							text='Products'
 							isActive={activeTab === 'Products'}
 							onClick={() => setActiveTab('Products')}
-						/>
+						/> */}
 
 <MenuItem
 							icon={<FaBox />}

@@ -1,4 +1,6 @@
+// leave.mjs
 import mongoose from 'mongoose';
+
 const LeaveSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   startDate: String,
@@ -8,4 +10,6 @@ const LeaveSchema = new mongoose.Schema({
   status: { type: String, default: 'Pending' },
 });
 
-module.exports = mongoose.model('Leave', LeaveSchema);
+const Leave = mongoose.model('Leave', LeaveSchema);
+
+export default Leave; // ✅ ES module export

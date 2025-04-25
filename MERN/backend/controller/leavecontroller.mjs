@@ -1,5 +1,6 @@
 import Leave from '../models/Leave/leave.mjs';
 
+
 export const applyLeave = async (req, res) => {
   try {
     const leave = new Leave(req.body);

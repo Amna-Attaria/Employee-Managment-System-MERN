@@ -3,7 +3,11 @@ import mongoose from "./db/index.mjs";
 import userRoutes from "./routes/userRoutes.mjs"
 import cartRoutes from "./routes/cartRoutes.mjs"
 import productRoutes from "./routes/productRoutes.mjs"
-import leaveRouter from "./routes/userRoutes.mjs"
+import leaveRouter from "./routes/leaveRoutes.mjs"
+import cheakinoutRoutes from './routes/cheackinoutRoutes.mjs';
+
+
+
 
 import chalk from "chalk";
 import cors from "cors";
@@ -33,6 +37,12 @@ app.use("/api/auth",userRoutes)
 app.use("/api/cart",cartRoutes)
 app.use('/api/products', productRoutes);
 app.use('/api/leave', leaveRouter);
+try {
+	app.use('/api', cheakinoutRoutes);
+  } catch (error) {
+	console.error('Error registering routes:', error);
+  }
+  
 
 
 

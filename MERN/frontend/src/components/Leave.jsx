@@ -37,6 +37,7 @@ const Leave = () => {
   
       if (data && data.success) {
         setLeaveList([...leaveList, data.leave]); // push new leave to UI
+        
         setStatusMessage("Leave request submitted successfully ✅");
   
         // reset form
@@ -94,7 +95,8 @@ const Leave = () => {
           >
             <option>Sick</option>
             <option>Casual</option>
-            <option>Paid</option>
+            <option>Travel</option>
+            <option>Other</option>
           </select>
         </div>
 

@@ -1,11 +1,11 @@
-// routes/leaveroutes.mjs
 import express from 'express';
+import { applyLeave } from '../controller/leavecontroller.mjs';
+// import { verifyToken } from '../middleware/auth.js'; // adjust the path if needed
+
 const router = express.Router();
 
-import { applyLeave } from '../controller/leavecontroller.mjs';
-import { verifyToken } from '../middleware/auth.js';  // Import the JWT verification middleware
+// router.post('/apply', verifyToken, applyLeave);
+// try removing verifyToken if you suspect JWT is causing issues
+router.post('/apply', applyLeave);
 
-
-router.post('/apply', verifyToken, applyLeave);
-// router.post('/apply', applyLeave);  
 export default router;
