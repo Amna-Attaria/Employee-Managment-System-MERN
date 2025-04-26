@@ -1,6 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+// import {
+//   BarChart,
+//   Bar,
+//   XAxis,
+//   YAxis,
+//   CartesianGrid,
+//   Tooltip,
+//   ResponsiveContainer,
+//   Legend,
+// } from "recharts";
+
+// // ------------------ graph ----------------
+// const sampleData = [
+//   { date: "Apr 21", checkIn: 1, checkOut: 1 },
+//   { date: "Apr 22", checkIn: 1, checkOut: 0 },
+//   { date: "Apr 23", checkIn: 1, checkOut: 1 },
+//   { date: "Apr 24", checkIn: 1, checkOut: 1 },
+// ];
 import axios from "axios"; // ✅ Imported axios
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
@@ -129,7 +147,28 @@ const Dashbord = () => {
   </div>
 </div>
 
+{/* <div className="w-full max-w-4xl bg-white p-6 rounded-xl shadow-md mt-8">
+  <h2 className="text-2xl font-bold text-teal-700 mb-4">CheckIn/CheckOut Summary</h2>
+  <ResponsiveContainer width="100%" height={300}>
+    <BarChart data={sampleData}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="date" />
+      <YAxis allowDecimals={false} />
+      <Tooltip />
+      <Legend />
+      <Bar dataKey="checkIn" fill="#38b2ac" name="Check-In" />
+      <Bar dataKey="checkOut" fill="#f56565" name="Check-Out" />
+    </BarChart>
+  </ResponsiveContainer>
+</div> */}
+
+
     </div>
+
+
+// ----------------------- GRAPH ----------------------
+
+    
   );
 };
 
