@@ -149,7 +149,7 @@ const Profile = () => {
         <p className="text-teal-100 text-sm">Welcome back, {user.name}!</p>
       </div>
       <div className="space-x-3">
-        <FontAwesomeIcon
+        {/* <FontAwesomeIcon
           icon={faUserPen}
           className="h-6 w-6 hover:text-teal-300 transition duration-300 cursor-pointer"
           onClick={() => navigate("/update")}
@@ -158,7 +158,7 @@ const Profile = () => {
           icon={faTrash}
           className="h-6 w-6 hover:text-teal-400 transition duration-300 cursor-pointer"
           onClick={async () => { await deleteUser(user._id) }}
-        />
+        /> */}
       </div>
     </div>
 

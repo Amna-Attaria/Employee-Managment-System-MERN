@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faUserPen } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faTrash, faUserPen } from "@fortawesome/free-solid-svg-icons";
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 const Profile = () => {
@@ -91,7 +91,7 @@ const Profile = () => {
         {/* Card Header */}
         <div className="bg-gray-800 text-white p-6 flex">
           <p className="text-gray-300 w-64 flex-1 ">Welcome back, {user.name}!</p>
-          <div>
+          {/* <div>
             <FontAwesomeIcon
               icon={faUserPen}
               className="h-6 w-6 sm:h-8 sm:w-8 hover:text-[#4bf6d4] transition duration-300"
@@ -102,7 +102,7 @@ const Profile = () => {
               className="h-6 w-6 sm:h-8 sm:w-8 hover:text-[#4bf6d4] transition duration-300"
               onClick={async () => { await deleteUser(user._id) }}
             />
-          </div>
+          </div> */}
         </div>
 
         {/* Card Body */}
