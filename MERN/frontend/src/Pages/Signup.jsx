@@ -128,6 +128,22 @@ const Signup = () => {
   </Link>
 </h3>
 
+<div className="p-6 bg-white rounded-lg shadow-lg mt-10 max-w-4xl mx-auto">
+  <h3 className="text-2xl font-semibold text-red-500">Note</h3>
+  
+  <h4 className=" text-gray-800 mb-4">
+    I added some restrictions: only employees who are authenticated with the database can access the employee dashboard.
+  </h4>
+  
+  <h4 className="text-lg font-semibold text-gray-800 mb-3">Employee Details</h4>
+  
+  <div className="bg-gray-50 p-4 rounded-lg">
+    <p className="bg-white p-3 mb-2 rounded-md shadow-md"><strong>Name:</strong> Amna</p>
+    <p className="bg-white p-3 mb-2 rounded-md shadow-md"><strong>Email:</strong> amna@gmail.com</p>
+    <p className="bg-white p-3 mb-2 rounded-md shadow-md"><strong>Password:</strong> Amna159</p>
+  </div>
+</div>
+  
     </Form>
   </Formik>
   
