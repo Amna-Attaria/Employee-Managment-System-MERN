@@ -21,7 +21,8 @@ app.use(
 	cors({
 		origin: ['http://localhost:5174',
 			 'http://localhost:5173',
-			'https://employee-managment-system-mern.vercel.app',
+			'https://employee-managment-system-mern.vercel.app', 
+			// 'https://employee-managment-system-mern-kg7hstieg-amna-attarias-projects.vercel.app'
 			
 			],
 		methods: ['GET', 'PUT', 'POST', 'DELETE'],

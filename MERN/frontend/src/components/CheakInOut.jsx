@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
 const CheckInOut = () => {
   const [employeeName, setEmployeeName] = useState('');
   const [status, setStatus] = useState("Not Checked In");
@@ -18,7 +18,7 @@ const CheckInOut = () => {
     const currentCheckInTime = new Date().toISOString();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/checkin', {
+      const response = await axios.post(`${apiUrl}/checkin`, {
         employeeName,
         checkInTime: currentCheckInTime,
       });
@@ -44,7 +44,7 @@ const CheckInOut = () => {
     const employeeNameFromLocalStorage = localStorage.getItem('employeeName');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/checkout', {
+      const response = await axios.post(`${apiUrl}/checkout`, {
         employeeName: employeeNameFromLocalStorage,
         checkOutTime: currentCheckOutTime,
       });
@@ -66,7 +66,7 @@ const CheckInOut = () => {
 
  const fetchHistory = async (name) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/history?employeeName=${name}`);
+      const response = await axios.get(`${apiUrl}/history?employeeName=${name}`);
       setHistory(response.data);
     } catch (err) {
       console.error('Error fetching history:', err);

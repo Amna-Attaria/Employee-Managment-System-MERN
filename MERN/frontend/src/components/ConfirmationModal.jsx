@@ -13,7 +13,7 @@ const CheckInOut = () => {
     localStorage.setItem('employeeName', employeeName);
 
     // Save Check-In data to the backend
-    axios.post('http://localhost:5000/api/checkin', {
+    axios.post(`${apiUrl}/checkin`, {
       employeeName: employeeName,
       checkInTime: checkInTime,
     })
@@ -31,7 +31,7 @@ const CheckInOut = () => {
     const employeeName = localStorage.getItem('employeeName');
 
     // Send Check-Out data to the backend
-    axios.post('http://localhost:5000/api/checkout', {
+    axios.post( `${apiUrl}/checkout`, {
       employeeName: employeeName,
       checkOutTime: checkOutTime,
     })

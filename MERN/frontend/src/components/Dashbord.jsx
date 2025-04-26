@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
 // import {
 //   BarChart,
 //   Bar,
@@ -20,6 +21,7 @@ import { toast } from "react-toastify";
 //   { date: "Apr 24", checkIn: 1, checkOut: 1 },
 // ];
 import axios from "axios"; // ✅ Imported axios
+
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -91,7 +93,7 @@ const Dashbord = () => {
   };
   const fetchHistory = async (name) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/history?employeeName=${name}`);
+      const response = await axios.get(`${apiUrl}/history?employeeName=${name}`);
       const data = response.data;
       if (data && data.length > 0) {
         const latestEntry = data[data.length - 1];

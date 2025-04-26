@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
 const Leave = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -19,7 +19,7 @@ const Leave = () => {
     };
   
     try {
-      const response = await fetch('http://localhost:5000/api/leave/apply', {
+      const response = await fetch(`${apiUrl}/leave/apply`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -8,7 +8,7 @@ import Leave from './Leave';
 import Profile from './Profile';
 import CheakInOut from './CheakInOut'
 import Logout from './Logout'
-
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 const EmployeeDashboard = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -16,7 +16,7 @@ const EmployeeDashboard = () => {
 	const [totalProducts, setTotalProducts] = useState(0);
 
 	const navigate = useNavigate();
-	const apiUrl = import.meta.env.VITE_API_BASE_URL;
+
 
 	// ✅ Check if the user is an employee before allowing access
 	const checkEmployeeStatus = async () => {
