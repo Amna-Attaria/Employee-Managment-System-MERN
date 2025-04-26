@@ -21,7 +21,7 @@ app.use(
 	cors({
 		origin: ['http://localhost:5174',
 			 'http://localhost:5173',
-			'https://practice-mern-chi.vercel.app',
+			'https://employee-managment-system-mern.vercel.app',
 			
 			],
 		methods: ['GET', 'PUT', 'POST', 'DELETE'],
